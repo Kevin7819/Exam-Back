@@ -1,0 +1,16 @@
+# Carpetas de compilación y dependencias (en cualquier nivel del proyecto)
+**/bin/
+**/obj/
+**/node_modules/
+**/target/
+**/build/
+**/dist/
+
+# Carpeta de imágenes subidas
+UploadedImages/
+
+# Configuración sensible (no versionar)
+**/appsettings.json
+
+# Migraciones de Entity Framework (generadas automáticamente)
+**/Migrations/
