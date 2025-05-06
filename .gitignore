@@ -1,4 +1,4 @@
-# Carpetas de compilación y dependencias (en cualquier nivel del proyecto)
+# Build and dependency folders (at any level of the project)
 **/bin/
 **/obj/
 **/node_modules/
@@ -6,11 +6,11 @@
 **/build/
 **/dist/
 
-# Carpeta de imágenes subidas
+# Uploaded images folder
 UploadedImages/
 
-# Configuración sensible (no versionar)
+# Sensitive configuration (do not version)
 **/appsettings.json
 
-# Migraciones de Entity Framework (generadas automáticamente)
+# Entity Framework migrations (automatically generated)
 **/Migrations/
