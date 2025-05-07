@@ -9,10 +9,11 @@ namespace api.Dtos.Student
     public string Name { get; set; }
 
     [Required]
-    [EmailAddress]
+    [StringLength(100)]
     public string Email { get; set; }
 
-    [Phone]
+    [Required]
+    [StringLength(100)]
     public string Phone { get; set; }
     [Required]
     public int CourseId { get; set; }
