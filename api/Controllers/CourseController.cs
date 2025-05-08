@@ -3,6 +3,7 @@ using api.Dtos.Course;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace api.Controllers
 {
@@ -34,6 +35,7 @@ namespace api.Controllers
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCourseRequestDto dto)
     {
+      Console.WriteLine($"Received new course: {JsonSerializer.Serialize(dto)}");
       var model = dto.ToCourseFromCreateDto();
       await _context.Courses.AddAsync(model);
       await _context.SaveChangesAsync();

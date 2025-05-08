@@ -11,7 +11,6 @@ namespace api.Dtos.Course
     [StringLength(500)]
     public string Description { get; set; }
 
-    [Required]
     [Url]
     public string ImageUrl { get; set; }
 
