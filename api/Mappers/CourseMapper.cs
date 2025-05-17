@@ -27,7 +27,6 @@ namespace api.Mappers
       {
         Name = dto.Name,
         Description = dto.Description,
-        ImageUrl = dto.ImageUrl,
         Schedule = dto.Schedule,
         Professor = dto.Professor
       };
