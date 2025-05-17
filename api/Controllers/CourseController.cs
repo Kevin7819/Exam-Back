@@ -23,6 +23,8 @@ namespace api.Controllers
             Directory.CreateDirectory(_imagePath);
         }
 
+        // GET: api/courses
+        // Returns all courses including their students
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -40,7 +42,8 @@ namespace api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        // GET: api/courses/{id}
+        // Returns a single course by ID, including students
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -58,7 +61,8 @@ namespace api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        // POST: api/courses
+        // Creates a new course after validating uniqueness of the name
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateCourseRequestDto dto)
         {
@@ -102,7 +106,8 @@ namespace api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        // PUT: api/courses/{id}
+        // Updates an existing course, checking name uniqueness
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateCourseRequestDto dto)
         {
@@ -112,6 +117,15 @@ namespace api.Controllers
                 if (model == null) 
                     return NotFound();
 
+                // Validate that the new name is not used by another course (case-insensitive)
+                var nameInUse = await _context.Courses
+                    .AnyAsync(c => c.Id != id && c.Name.ToLower() == dto.Name.ToLower());
+                if (nameInUse)
+                {
+                    return BadRequest(new { message = "Another course with this name already exists." });
+                }
+                
+                // Update course fields
                 model.Name = dto.Name;
                 model.Description = dto.Description;
                 model.Schedule = dto.Schedule;
@@ -130,7 +144,8 @@ namespace api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        // DELETE: api/courses/{id}
+        // Deletes a course by ID
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
