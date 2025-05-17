@@ -1,0 +1,16 @@
+# Build and dependency folders (at any level of the project)
+**/bin/
+**/obj/
+**/node_modules/
+**/target/
+**/build/
+**/dist/
+
+# Uploaded images folder
+UploadedImages/
+
+# Sensitive configuration (do not version)
+**/appsettings.json
+
+# Entity Framework migrations (automatically generated)
+**/Migrations/
